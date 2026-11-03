@@ -1,4 +1,4 @@
-﻿namespace SistemaEstoque
+﻿namespace StockManager
 {
     internal class Program
     {
