@@ -41,14 +41,14 @@ namespace StockManager.Models
                 throw new ArgumentException("O preço de custo não pode ser negativo");
             }
 
-            if (minStock < 0)
-            {
-                throw new ArgumentException("O estoque mínimo não pode ser negativo");
-            }
-
             if (quantity < 0)
             {
                 throw new ArgumentException("A quantidade não pode ser negativa");
+            }
+
+            if (minStock < 0)
+            {
+                throw new ArgumentException("O estoque mínimo não pode ser negativo");
             }
 
             Code = code;
@@ -82,6 +82,8 @@ namespace StockManager.Models
             {
                 throw new ArgumentException("A quantidade a ser removida não pode ser maior que a atual");
             }
+
+            Quantity -= qty;
         }
     }
 }

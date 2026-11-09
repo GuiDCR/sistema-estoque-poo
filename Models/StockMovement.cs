@@ -4,7 +4,7 @@ using System.Text;
 
 namespace StockManager.Models
 {
-    public enum MovementType { Entry, Sale, Adjustment, Loss}
+    public enum MovementType { FirstEntry, Entry, Sale, Adjustment, Loss}
     public record StockMovement(
         int Id,
         string ProductCode,
