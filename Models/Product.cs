@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.Text;
-using System.Xml.Linq;
-
-namespace StockManager.Models
+﻿namespace StockManager.Models
 {
     public class Product
     {
@@ -26,31 +20,13 @@ namespace StockManager.Models
                 throw new ArgumentException("O código do produto não pode ser vazio");
             }
 
-            if (String.IsNullOrWhiteSpace(name))
-            {
-                throw new ArgumentException("O nome do produto não pode ser vazio");
-            }
-
-            if (salePrice < 0)
-            {
-                throw new ArgumentException("O preço do produto não pode ser negativo");
-            }
-
-            if (costPrice < 0)
-            {
-                throw new ArgumentException("O preço de custo não pode ser negativo");
-            }
-
-            if (quantity < 0)
-            {
-                throw new ArgumentException("A quantidade não pode ser negativa");
-            }
-
-            if (minStock < 0)
-            {
-                throw new ArgumentException("O estoque mínimo não pode ser negativo");
-            }
-
+            ValidateText(code, "Código");
+            ValidateText(name, "Nome");
+            ValidateNotNegative(salePrice, "Preço de venda");
+            ValidateNotNegative(costPrice, "Preço de custo");
+            ValidateNotNegative(quantity, "Quantidade");
+            ValidateNotNegative(minStock, "Estoque mínimo");
+           
             Code = code;
             Name = name;
             SalePrice = salePrice;
@@ -84,6 +60,22 @@ namespace StockManager.Models
             }
 
             Quantity -= qty;
+        }
+
+        public static void ValidateNotNegative(decimal value, string fieldName)
+        {
+            if (value < 0)
+            {
+                throw new ArgumentException($"O {fieldName} não pode ser negativo");
+            }
+        }
+
+        public static void ValidateText(string text, string fieldName)
+        {
+            if (String.IsNullOrWhiteSpace(text))
+            {
+                throw new ArgumentException($"O(A) {fieldName} não pode ser vazio(a)");
+            }
         }
     }
 }
