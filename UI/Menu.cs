@@ -60,6 +60,44 @@ namespace StockManager.UI
             }
         }
 
+        private void RegisterProduct()
+        {
+            
+
+        }
+
+        private void CheckStock()
+        {
+            const int width = -20;
+
+            string header = $"{"Código", width}{"Nome", width}{"Preço de venda", width}" +
+                $"{"Preço de custo", width}{"Quantidade", width}{"Fornecedor", width}{"Marca", width}";
+
+            Console.WriteLine(header + "\n");
+
+            foreach (var product in Service.AllProducts)
+            {
+                Console.WriteLine($"{product.Code, width}{product.Name,width}{product.SalePrice, width}{product.CostPrice,width}" +
+                    $"{product.Quantity,width}{product.Supplier,width}{product.Brand,width}");
+            }
+            Console.ReadLine();
+        }
+
+        private void CheckHistory()
+        {
+
+        }
+
+        private void StockEntry()
+        {
+
+        }
+
+        private void StockExit()
+        {
+
+        }
+
         private static int ReadInt()
         {
             int value;
