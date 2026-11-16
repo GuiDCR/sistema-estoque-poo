@@ -1,4 +1,5 @@
-﻿using StockManager.Services;
+﻿using Spectre.Console;
+using StockManager.Services;
 
 namespace StockManager.UI
 {
@@ -47,9 +48,10 @@ namespace StockManager.UI
                 case 0:
                     break;
                 case 1:
-                    CheckStock();
+                    DisplayStock();
                     break;
                 case 2:
+                    RegisterProduct();
                     break;
                 case 3:
                     break;
@@ -62,10 +64,10 @@ namespace StockManager.UI
 
         private void RegisterProduct()
         {
-            
+            Console.WriteLine("======== Cadastro de Produto ========");
 
         }
-
+        /*
         private void CheckStock()
         {
             const int width = -20;
@@ -80,6 +82,26 @@ namespace StockManager.UI
                 Console.WriteLine($"{product.Code, width}{product.Name,width}{product.SalePrice, width}{product.CostPrice,width}" +
                     $"{product.Quantity,width}{product.Supplier,width}{product.Brand,width}");
             }
+            Console.ReadLine();
+        }
+        */
+
+        private void DisplayStock()
+        {
+            var table = new Table();
+            table.AddColumns(
+                "Código",
+                "Nome",
+                "Preço de venda",
+                "Preço de custo",
+                "Quantidade",
+                "Estoque mínimo",
+                "Fornecedor",
+                "Marca"
+                );
+
+            AnsiConsole.Write(new Rule("Consulta de Estoque"));
+            AnsiConsole.Write(Align.Center(table));
             Console.ReadLine();
         }
 
